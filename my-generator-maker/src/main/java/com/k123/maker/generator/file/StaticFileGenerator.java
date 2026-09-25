@@ -1,7 +1,6 @@
-package com.k123.generator;
+package com.k123.maker.generator.file;
 
 import cn.hutool.core.io.FileUtil;
-import cn.hutool.core.io.IORuntimeException;
 import cn.hutool.core.util.ArrayUtil;
 
 import java.io.File;
@@ -10,7 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 
-public class StaticGenerator {
+public class StaticFileGenerator {
     public static void main(String[] args) {
         //user.dir 是当前项目的根目录，是一个系统属性，可以通过 System.getProperty("user.dir") 获取。
         String rootPath = System.getProperty("user.dir");
