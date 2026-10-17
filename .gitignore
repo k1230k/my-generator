@@ -1,8 +1,14 @@
 ### Custom template
 # Add your custom rules here
 .idea
+.temp
+generated
+target
 my-generator.iml
 my-generator-basic.iml
+
+
+
 ### Java template
 # Compiled class file
 *.class

@@ -17,5 +17,4 @@ public class ListCommand implements Runnable {
             System.out.println(file);
         }
     }
-
 }
