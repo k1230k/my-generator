@@ -4,21 +4,16 @@ import com.k123.maker.meta.Meta;
 import com.k123.maker.template.TemplateMaker;
 import lombok.Data;
 
+
 /**
  * 制作模板
- *
- * @param newMeta
- * @param originProjectPath
- * @param templateMakerFileConfig
- * @param templateMakerModelConfig
- * @param id
- * @return
  */
 @Data
 public class TemplateMakerConfig {
-    private Meta meta;
+    private Meta meta = new Meta();
     private String originProjectPath;
-    private TemplateMakerFileConfig fileConfig;
-    private TemplateMakerModelConfig modelConfig;
+    private TemplateMakerFileConfig fileConfig = new TemplateMakerFileConfig();
+    private TemplateMakerModelConfig modelConfig = new TemplateMakerModelConfig();
     private Long id;
+    private TemplateMakerOutputConfig outputConfig = new TemplateMakerOutputConfig();
 }

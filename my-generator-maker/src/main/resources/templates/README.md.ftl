@@ -22,10 +22,10 @@ generator <命令> <选项参数>
 generator generate <#list modelConfig.models as modelInfo>
             <#if modelInfo.groupKey??>
                 <#list modelInfo.models as subModelInfo>
-                    -${subModelInfo.abbr}
+                    -${subModelInfo.abbr!}
                 </#list>
             <#else>
-                -${modelInfo.abbr}
+                -${modelInfo.abbr!}
             </#if>
         </#list>
 ···

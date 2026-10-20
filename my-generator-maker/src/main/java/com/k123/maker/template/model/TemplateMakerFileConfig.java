@@ -16,6 +16,8 @@ public class TemplateMakerFileConfig {
     public static class FileInfoConfig {
 
         private String path;
+        //控制文件是否生成的
+        private String condition;
 
         private List<FileFilterConfig> filterConfigList;
     }

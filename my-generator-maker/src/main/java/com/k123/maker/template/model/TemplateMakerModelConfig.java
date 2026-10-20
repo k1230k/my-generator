@@ -29,10 +29,14 @@ public class TemplateMakerModelConfig {
     @Data
     public static class ModelGroupConfig {
 
-        private String groupName;
-
         private String groupKey;
 
+        private String groupName;
+
         private String condition;
+
+        private String type;
+
+        private String description;
     }
 }

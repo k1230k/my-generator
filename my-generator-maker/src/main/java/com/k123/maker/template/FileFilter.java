@@ -113,11 +113,20 @@ public class FileFilter {
     }
 
     public static List<File> doFilter(String filePath, List<FileFilterConfig> fileFilterConfigList){
+        System.out.println("=== 扫描目录:" + filePath);
+        File root = new File(filePath);
+        System.out.println("root是否存在:" + root.exists());
+        System.out.println("root是不是目录:" + root.isDirectory());
+
         List<File> fileList = FileUtil.loopFiles(filePath);
+        System.out.println("loopFiles拿到原始文件总数："+fileList.size());
+
         List<File> collect = fileList.stream()
                 .filter(file -> doSingleFileFilter(fileFilterConfigList, file))
                 .collect(Collectors.toList());
+        System.out.println("过滤后剩余文件数："+collect.size());
         return collect;
     }
+
 
 }

@@ -78,7 +78,7 @@ public class MetaValidator {
         // inputRootPath：.source + sourceRootPath 的最后一个层级路径
         //（生成了的生成器继续执行需要的模板位置[用于生成了的生成器生成代码]）
         String inputRootPath = fileConfig.getInputRootPath();
-        String defaultInputRootPath = ".source/" + FileUtil.getLastPathEle(Paths.get(sourceRootPath)).getFileName().toString();
+        String defaultInputRootPath = "./source/" + FileUtil.getLastPathEle(Paths.get(sourceRootPath)).getFileName().toString();
         if (StrUtil.isEmpty(inputRootPath)) {
             fileConfig.setInputRootPath(defaultInputRootPath);
         }

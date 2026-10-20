@@ -64,9 +64,7 @@ public class MainGenerator {
             <#else>
                 <#if fileInfo.condition??>
                     if(${fileInfo.condition}){
-                    <#list fileInfo.files as fileInfo>
                         <@generateFile fileInfo = fileInfo />
-                    </#list>
                     }
                 <#else>
                     <@generateFile fileInfo = fileInfo />
