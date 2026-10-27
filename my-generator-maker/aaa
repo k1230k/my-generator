@@ -1,0 +1,66 @@
+package com.yupi.cli.command;
+
+import cn.hutool.core.bean.BeanUtil;
+import com.yupi.generator.MainGenerator;
+import com.yupi.model.DataModel;
+import lombok.Data;
+import picocli.CommandLine;
+import picocli.CommandLine.Command;
+import picocli.CommandLine.Option;
+
+@Command(name = "generate", description = "生成代码", mixinStandardHelpOptions = true)
+@Data
+public class TestGroupCommand implements Runnable {
+
+    @Option(names = {"-g", "--needGit"}, arity = "0..1", description = "是否生成 .gitignore 文件", interactive = true, echo = true)
+    private boolean needGit = true;
+
+    @Option(names = {"-l", "--loop"}, arity = "0..1", description = "是否生成循环", interactive = true, echo = true)
+    private boolean loop = false;
+
+    private static DataModel.MainTemplate mainTemplate = new DataModel.MainTemplate();
+
+    public void run() {
+        System.out.println(needGit);
+        System.out.println(loop);
+        if(true) {
+            System.out.println("输入核心模板配置:");
+            CommandLine commandLine = new CommandLine(MainTemplateCommand.class);
+            commandLine.execute("a", "o");
+        }
+        System.out.println(mainTemplate);
+        //赋值给DataModel
+//        DataModel dataModel = new DataModel();
+//        dataModel.mainTemplate = mainTemplate;
+//        BeanUtil.copyProperties(this, dataModel);
+//        MainGenerator.doGenerate(dataModel);
+    }
+
+    @Command(name = "mainTemplate", description = "生成核心模板", mixinStandardHelpOptions = true)
+    @Data
+    public static class MainTemplateCommand implements Runnable {
+        /**
+         * 作者注释
+         */
+
+        @Option(names = {"-a", "--author"}, arity = "0..1", description = "作者注释", interactive = true, echo = true)
+        public String author = "k123";
+
+        /**
+         * 输出信息
+         */
+        @Option(names = {"-o", "--outputText"}, arity = "0..1", description = "输出信息", interactive = true, echo = true)
+        public String outputText = "输出结果 ";
+
+        @Override
+        public void run() {
+            mainTemplate.author = author;
+            mainTemplate.outputText = outputText;
+        }
+    }
+}
+
+
+
+
+

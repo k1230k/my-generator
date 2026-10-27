@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yupi.web.mapper.GeneratorMapper">
+
+    <resultMap id="BaseResultMap" type="com.yupi.web.model.entity.Generator">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="description" column="description"/>
+        <result property="basePackage" column="basePackage"/>
+        <result property="version" column="version"/>
+        <result property="author" column="author"/>
+        <result property="tags" column="tags"/>
+        <result property="picture" column="picture"/>
+        <result property="fileConfig" column="fileConfig"/>
+        <result property="modelConfig" column="modelConfig"/>
+        <result property="distPath" column="distPath"/>
+        <result property="status" column="status"/>
+        <result property="userId" column="userId"/>
+        <result property="createTime" column="createTime"/>
+        <result property="updateTime" column="updateTime"/>
+        <result property="isDelete" column="isDelete"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id
+        ,name,description,basePackage,version,author,
+        tags,picture,fileConfig,modelConfig,distPath,
+        status,userId,createTime,updateTime,isDelete
+    </sql>
+</mapper>
