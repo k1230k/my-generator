@@ -3,6 +3,7 @@ package com.k123.maker.generator.main;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.resource.ClassPathResource;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.core.util.ZipUtil;
 import com.k123.maker.generator.JarGenerator;
 import com.k123.maker.generator.ScriptGenerator;
 import com.k123.maker.generator.file.DynamicFileGenerator;
@@ -46,7 +47,7 @@ public class GenerateTemplate {
 
         //5、生成精简版程序
         //(项目运行只需要这些就可以)
-        buildDist(outputPath, shellOutputFilePath, jarPath, sourceCopyDestPath);
+        String distPath = buildDist(outputPath, shellOutputFilePath, jarPath, sourceCopyDestPath);
     }
 
 
@@ -138,7 +139,7 @@ public class GenerateTemplate {
         return shellOutputFilePath;
     }
 
-    protected void buildDist(String outputPath, String shellOutputFilePath, String jarPath, String sourceCopyDestPath) {
+    protected String buildDist(String outputPath, String shellOutputFilePath, String jarPath, String sourceCopyDestPath) {
         String distOutputPath = outputPath + "-dist";
         //拷贝jar包
         String curJarPath = outputPath + File.separator + jarPath;
@@ -151,5 +152,13 @@ public class GenerateTemplate {
         //拷贝模板文件
         String distModelPath = distOutputPath + File.separator + "source";
         FileUtil.copy(sourceCopyDestPath, distOutputPath, true);
+        return distOutputPath;
+    }
+
+    protected String buildZip(String outputPath) {
+        //压缩后的文件地址
+        String zipPath = outputPath + ".zip";
+        ZipUtil.zip(outputPath, zipPath);
+        return zipPath;
     }
 }

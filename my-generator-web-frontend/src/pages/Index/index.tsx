@@ -4,6 +4,7 @@ import { PageContainer, ProFormSelect, ProFormText, QueryFilter } from '@ant-des
 import { Avatar, Card, Flex, Image, Input, List, message, Tabs, Tag, Typography } from 'antd';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
+import { history } from "@umijs/max";
 
 /**
  * 默认分页参数
@@ -58,6 +59,7 @@ const IndexPage: React.FC = () => {
       return <></>;
     }
 
+    //{}是打通JS和HTML的口子，里面可以写原生JS代码
     return (
       <div style={{ marginBottom: 8 }}>
         {tags.map((tag) => (
@@ -145,6 +147,7 @@ const IndexPage: React.FC = () => {
               xxl: 4,
             }}
             dataSource={dataList}
+
             pagination={{
               current: searchParams.current,
               pageSize: searchParams.pageSize,
@@ -160,13 +163,17 @@ const IndexPage: React.FC = () => {
             //data是自动取自dataList的，填充位置自己确定
             renderItem={(data) => (
               <List.Item>
-                <Card hoverable cover={<Image alt={data.name} src={data.picture} />}>
+                {/*想让点击Card跳转详情页面可以包一个Link路由组件*/}
+                <Card hoverable cover={<Image alt={data.name} src={data.picture}/>}>
                   <Card.Meta
                     title={<a>{data.name}</a>}
                     description={
                       <Typography.Paragraph ellipsis={{ rows: 2 }} style={{ height: 44 }}>
                         {data.description}
                       </Typography.Paragraph>
+                    }
+                    onClick = {
+                      () => {history.push(`/generator/detail/${data.id}`);}
                     }
                   />
                   {tagListView(data.tags)}

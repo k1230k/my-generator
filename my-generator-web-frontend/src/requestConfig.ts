@@ -2,6 +2,7 @@
 import type { RequestOptions } from '@@/plugin-request/request';
 import type { RequestConfig } from '@umijs/max';
 
+
 // 与后端约定的响应数据格式
 interface ResponseStructure {
   success: boolean;
@@ -39,6 +40,11 @@ export const requestConfig: RequestConfig = {
       const { data } = response as unknown as ResponseStructure;
       if (!data) {
         throw new Error('服务异常');
+      }
+
+      //文件下载时，直接返回
+      if (requestPath.includes("download")) {
+        return response;
       }
 
       // 错误码处理

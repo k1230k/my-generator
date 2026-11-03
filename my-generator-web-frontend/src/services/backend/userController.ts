@@ -1,31 +1,15 @@
 // @ts-ignore
 /* eslint-disable */
-//导入 umi-max 封装好的全局请求工具request
-//（是app.tsx里requestConfig配置的那一套：自动带上token、捕获报错等）
 import { request } from '@umijs/max';
 
 /** addUser POST /api/user/add */
-//SpringDOC生成operation
-//body 传给后端的请求体；options？，？代表可选参数
-//options这个参数是给前端request工具本身的配置
-//（控制请求怎么发，不是用于发给后端的）
 export async function addUserUsingPost(body: API.UserAddRequest, options?: { [key: string]: any }) {
-  //<>中是后端返回数据的TS类型
-  return request<API.BaseResponseLong_>('/api/user/add',
-    //此处是第二个参数，是umi-request的配置对象
-    //是请求库认的配置，如method、data
-    {
+  return request<API.BaseResponseLong_>('/api/user/add', {
     method: 'POST',
-    //请求头
     headers: {
       'Content-Type': 'application/json',
     },
-    //请求体
     data: body,
-    //额外配置展开，覆盖前面的配置
-    //...展开运算符，把options里所有属性全部摊开入request配置对象里
-    //起到给次次接口请求单独加/覆盖配置的作用
-    //options || {} 如果options没传入，则用空对象{}兜底
     ...(options || {}),
   });
 }
@@ -33,8 +17,6 @@ export async function addUserUsingPost(body: API.UserAddRequest, options?: { [ke
 /** deleteUser POST /api/user/delete */
 export async function deleteUserUsingPost(
   body: API.DeleteRequest,
-  //{[key:string]:any}TS的索引签名类型
-  //key:string对象的key（属性）必须是str，any 这个key对应的值什么类型都可
   options?: { [key: string]: any },
 ) {
   return request<API.BaseResponseBoolean_>('/api/user/delete', {

@@ -12,6 +12,7 @@ import Settings from '../../../../config/defaultSettings';
 const Login: React.FC = () => {
   const [type, setType] = useState<string>('account');
   const { initialState, setInitialState } = useModel('@@initialState');
+  //@ts-ignore
   const containerClassName = useEmotionCss(() => {
     return {
       display: 'flex',

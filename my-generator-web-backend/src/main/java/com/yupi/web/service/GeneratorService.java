@@ -10,7 +10,7 @@ import com.yupi.web.model.vo.GeneratorVO;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * 帖子服务
+ * 生成器服务
  *
  * @author <a href="https://github.com/liyupi">程序员鱼皮</a>
  * @from <a href="https://yupi.icu">编程导航知识星球</a>
@@ -34,7 +34,7 @@ public interface GeneratorService extends IService<Generator> {
     QueryWrapper<Generator> getQueryWrapper(GeneratorQueryRequest generatorQueryRequest);
 
     /**
-     * 获取帖子封装
+     * 获取生成器封装
      *
      * @param generator
      * @param request
@@ -43,7 +43,7 @@ public interface GeneratorService extends IService<Generator> {
     GeneratorVO getGeneratorVO(Generator generator, HttpServletRequest request);
 
     /**
-     * 分页获取帖子封装
+     * 分页获取生成器封装
      *
      * @param generatorPage
      * @param request

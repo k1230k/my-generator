@@ -15,6 +15,34 @@ export default [
   },
   //欢迎页，icon、name左侧菜单栏的图标和文字
   { path: '/', icon: 'home', component: './Index', name: '主页' },
+
+  { path: '/generator/add',
+    icon: 'plus',
+    component: './Generator/Add',
+    name: '创建生成器',
+  },
+  {
+    path: '/generator/update',
+    icon: 'plus',
+    component: './Generator/Add',
+    name: '修改生成器',
+    hideInMenu: true,
+  },
+  {
+    //:代表动态路由参数，:id是一个占位符，路径这个位置输入什么id就是什么（不一定数字
+    path: '/generator/detail/:id',
+    icon: 'home',
+    component: './Generator/Detail',
+    name: '生成器详情',
+    hideInMenu: true,
+  },
+  { path: '/test/file',
+    icon: 'home',
+    component: './Test/File',
+    name: '文件上传下载测试',
+    hideInMenu: true
+  },
+
   //管理后台模块
   {
     path: '/admin',

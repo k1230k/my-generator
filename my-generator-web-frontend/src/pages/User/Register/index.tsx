@@ -19,6 +19,7 @@ const UserRegisterPage: React.FC = () => {
   //内置钩子useState用来在函数组件里存状态（改了会自动重渲染页面）
   //const [当前值, 修改这个值的函数] =  钩子<类型>(默认值);
   const [type, setType] = useState<string>('account');
+  //@ts-ignore
   const containerClassName = useEmotionCss(() => {
     return {
       display: 'flex',

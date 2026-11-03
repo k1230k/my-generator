@@ -42,7 +42,7 @@ public class GeneratorAddRequest implements Serializable {
     private String author;
 
     /**
-     * 标签列表（json 数组）
+     * 标签列表（json 数组），传入String列表，存入JSON
      */
     private List<String> tags;
 

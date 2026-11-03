@@ -1,6 +1,8 @@
 package com.yupi.web.manager;
 
 import com.qcloud.cos.COSClient;
+import com.qcloud.cos.model.COSObject;
+import com.qcloud.cos.model.GetObjectRequest;
 import com.qcloud.cos.model.PutObjectRequest;
 import com.qcloud.cos.model.PutObjectResult;
 import com.yupi.web.config.CosClientConfig;
@@ -11,7 +13,7 @@ import java.io.File;
 
 /**
  * Cos 对象存储操作
- *
+ * manager可以被service等公用的能力类
  * @author <a href="https://github.com/liyupi">程序员鱼皮</a>
  * @from <a href="https://yupi.icu">编程导航知识星球</a>
  */
@@ -27,7 +29,7 @@ public class CosManager {
     /**
      * 上传对象
      *
-     * @param key           唯一键
+     * @param key           唯一键（COS桶里的“完整路径+文件名”）
      * @param localFilePath 本地文件路径
      * @return
      */
@@ -49,4 +51,16 @@ public class CosManager {
                 file);
         return cosClient.putObject(putObjectRequest);
     }
+
+    /**
+     * 下载对象
+     *
+     * @param key 唯一键
+     * @return
+     */
+    public COSObject getObject(String key) {
+        GetObjectRequest getObjectRequest = new GetObjectRequest(cosClientConfig.getBucket(), key);
+        return cosClient.getObject(getObjectRequest);
+    }
+
 }
