@@ -203,6 +203,8 @@ public class TemplateMaker {
      * @param templateMakerModelConfig
      * @param sourceRootPath
      * @return
+     * 文件配置，你要生成的代码生成器想具有修改功能的文件是哪些
+     * 配置传进来生成一下文件模板
      */
     private static List<Meta.FileConfig.FileInfo> makeFileTemplates(TemplateMakerFileConfig templateMakerFileConfig,
                                                                     TemplateMakerModelConfig templateMakerModelConfig, String sourceRootPath) {
@@ -238,6 +240,9 @@ public class TemplateMaker {
             }
         }
 
+        //（如果这一批生成模板的文件要放一个组里共同控制的话）
+        //（此处生成一下分了组的这些文件的json配置）
+
         // 如果是文件组
         TemplateMakerFileConfig.FileGroupConfig fileGroupConfig = templateMakerFileConfig.getFileGroupConfig();
         if (fileGroupConfig != null) {
@@ -260,7 +265,7 @@ public class TemplateMaker {
     }
 
     /**
-     * 制作文件模板
+     * 制作单个文件模板
      *
      * @param templateMakerModelConfig
      * @param sourceRootPath
@@ -291,9 +296,11 @@ public class TemplateMaker {
         }
 
         // 支持多个模型：对同一个文件的内容，遍历模型进行多轮替换
+        //这个记载模型分组信息
         TemplateMakerModelConfig.ModelGroupConfig modelGroupConfig = templateMakerModelConfig.getModelGroupConfig();
         String newFileContent = fileContent;
         String replacement;
+        //这个记载生成模型所用的替换和被替换信息
         for (TemplateMakerModelConfig.ModelInfoConfig modelInfoConfig : templateMakerModelConfig.getModels()) {
             // 不是分组
             if (modelGroupConfig == null) {

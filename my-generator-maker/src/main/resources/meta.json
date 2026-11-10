@@ -20,7 +20,7 @@
       },
       {
         "groupKey": "git",
-        "groupName": "开源",
+        "groupName": "开源（此处的fileConfig是决定文件的复制的）",
         "type": "group",
         "condition": "needGit",
         "files": [
@@ -45,7 +45,7 @@
       {
         "fieldName": "needGit",
         "type": "boolean",
-        "description": "是否生成 .gitignore 文件",
+        "description": "是否生成 .gitignore 文件(此处的modelConfig是控制生成的生成器的命令行内容的，决定交互哪些内容)",
         "defaultValue": true,
         "abbr": "g"
       },

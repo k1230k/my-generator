@@ -28,14 +28,15 @@ public class DynamicFileGenerator {
         Configuration configuration = new Configuration(Configuration.VERSION_2_3_32);
 
         File templateDir = new File(inputPath).getParentFile();
-        // 指定模板文件所在的路径
+        // 指定模板文件所在的目录
         configuration.setDirectoryForTemplateLoading(templateDir);
         // 设置模板文件使用的字符集
         configuration.setDefaultEncoding("utf-8");
         // 设置数字格式，避免科学计数法
         configuration.setNumberFormat("0.######");
-        //创建模板对象，加载指定模板文件
+        //先获取这个模板文件的名字，创建模板对象，加载指定模板文件
         String templateName = new File(inputPath).getName();
+        //使用这个Configuration配置对象来获取模板对象（传入文件名）（文件路径等已经在上方配置了）
         Template template = configuration.getTemplate(templateName);
 
         if(!FileUtil.exist(outputPath)) {

@@ -5,6 +5,9 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * 文件配置，记载文件的筛选过滤和分组信息
+ */
 @Data
 public class TemplateMakerFileConfig {
 

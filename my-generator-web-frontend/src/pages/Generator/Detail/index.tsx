@@ -2,16 +2,15 @@
 import {downloadGeneratorByIdUsingGet, getGeneratorVoByIdUsingGet,} from '@/services/backend/generatorController';
 import {Link, useModel, useParams} from '@@/exports';
 import {PageContainer} from '@ant-design/pro-components';
-import {Card, message, Row, Col, Space, Typography, Button, Tag, Image, Tabs} from 'antd';
+import {Button, Card, Col, Image, message, Row, Space, Tabs, Tag, Typography} from 'antd';
 import React, {useEffect, useState} from 'react';
 import moment from "moment";
 import {DownloadOutlined, EditOutlined} from "@ant-design/icons";
 import ModelConfig from "@/pages/Generator/Detail/components/ModelConfig";
 import AuthorInfo from "@/pages/Generator/Detail/components/AuthorInfo";
 import FileConfig from "@/pages/Generator/Detail/components/FileConfig";
-import {testDownloadFileUsingGet} from "@/services/backend/fileController";
-import {COS_HOST} from "@/constants";
 import {saveAs} from "file-saver";
+
 /**
  * 生成器详情页面
  * @constructor
@@ -125,7 +124,10 @@ const GeneratorDetailPage: React.FC = () => {
             <Typography.Paragraph type="secondary">作者：{data.author}</Typography.Paragraph>
             <div style={{ marginBottom: 24 }} />
             <Space size="middle">
-              <Button type="primary">立即使用</Button>
+                {/*``反引号，支持 `${变量}` 插值*/}
+              <Link to={`/generator/use/${id}`}>
+                <Button type="primary">立即使用</Button>
+              </Link>
               {downloadButton}
               {editButton}
             </Space>

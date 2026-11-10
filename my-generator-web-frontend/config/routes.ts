@@ -29,6 +29,13 @@ export default [
     hideInMenu: true,
   },
   {
+    path: '/generator/use/:id',
+    icon: 'plus',
+    component: './Generator/Use',
+    name: '使用生成器',
+    hideInMenu: true,
+  },
+  {
     //:代表动态路由参数，:id是一个占位符，路径这个位置输入什么id就是什么（不一定数字
     path: '/generator/detail/:id',
     icon: 'home',

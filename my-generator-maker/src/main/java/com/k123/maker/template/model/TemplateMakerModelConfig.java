@@ -5,6 +5,9 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * 模型配置，记载文件需要被替换、分组的信息
+ */
 @Data
 public class TemplateMakerModelConfig {
 

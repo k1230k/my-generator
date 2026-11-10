@@ -39,10 +39,6 @@ public class Meta {
             private String groupName;
             private Object condition;
             private List<FileInfo> files;
-
-            public void setgenr() {
-
-            }
         }
     }
 

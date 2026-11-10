@@ -96,6 +96,11 @@ public class GenerateTemplate {
         inputFilePath = inputResourcePath + File.separator + "templates/java/cli/command/ConfigCommand.java.ftl";
         outputFilePath = outputBaseJavaPackagePath + "/cli/command/ConfigCommand.java";
         DynamicFileGenerator.doGenerate(inputFilePath, outputFilePath, meta);
+        //cli.command.JsonGenerateCommand
+        inputFilePath = inputResourcePath + File.separator + "templates/java/cli/command/JsonGenerateCommand.java.ftl";
+        outputFilePath = outputBaseJavaPackagePath + "/cli/command/JsonGenerateCommand.java";
+        DynamicFileGenerator.doGenerate(inputFilePath, outputFilePath, meta);
+
         //cli.CommandExecutor
         inputFilePath = inputResourcePath + File.separator + "templates/java/cli/CommandExecutor.java.ftl";
         outputFilePath = outputBaseJavaPackagePath + "/cli/CommandExecutor.java";
@@ -150,7 +155,6 @@ public class GenerateTemplate {
         FileUtil.copy(shellOutputFilePath, distOutputPath, true);
         FileUtil.copy(shellOutputFilePath + ".bat", distOutputPath, true);
         //拷贝模板文件
-        String distModelPath = distOutputPath + File.separator + "source";
         FileUtil.copy(sourceCopyDestPath, distOutputPath, true);
         return distOutputPath;
     }
